@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1795770641527,
+      "tag": "0000_create_kakuma_skills_schema",
+      "breakpoints": true
+    }
+  ]
+}

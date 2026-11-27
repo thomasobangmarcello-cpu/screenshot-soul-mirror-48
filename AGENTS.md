@@ -28,3 +28,11 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- All visible copy is bilingual: use `useLang()` from `src/lib/i18n.tsx` (`t(en, sw)` inline, `tl({en, sw})` for content objects). Why: the language toggle must cover every string.
+- Guidance content (areas, activities, careers, guides) lives in `src/lib/content.ts`; matching rules in `src/lib/matching.ts` with tests in `src/test/matching.test.ts`. Why: one place to edit copy, logic stays testable.
+- Opportunities and mentors come only from the database with `verified = true`, read through `src/lib/public-data.functions.ts`; never hard-code listings. Why: the site must show verified records only.
+- Signed-in data is read and written with the browser Supabase client under RLS; pages needing a session live under `src/routes/_authenticated/` (client-rendered gate). Why: the session is stored in the browser, so the server cannot check it.
+- Personal data is written only after `profiles.consent_at` is set (dashboard consent step). Why: consent must precede any stored personal details, including for social sign-in.
